@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    {%block head%}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Named Entity Recognition App</title>
+    <link
+      id="favicon"
+      rel="icon"
+      type="image/x-icon"
+      href="static/images/mark.png"
+    />
+    {%endblock%}
+  </head>
+  <body
+    style="
+      background: radial-gradient(circle at center, #ddd 20%, transparent 30%),
+        #eee;
+      background-size: 24px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    "
+  >
+    <style>
+      p {
+        max-width: 80vw;
+        text-align: center;
+        font-size: 1.2em;
+        font-family: Sans-Serif;
+      }
+
+      textarea {
+        width: 50vw;
+        height: 100px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        font-size: 1.2em;
+        font-family: Sans-Serif;
+      }
+
+      input[type="submit"] {
+        padding: 10px 10px;
+        font-size: 1.2em;
+        font-weight: 700;
+        background: #008364;
+        color: #fff;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .first-letter {
+        color: #008364;
+      }
+
+      @media only screen and (max-width: 600px) {
+        textarea {
+          width: 300px;
+        }
+      }
+    </style>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100vw;
+      "
+    >
+      <a href="/">
+        <img
+          src="static/images/logo.png"
+          alt="logo"
+          width="300px"
+          style="width: 300px; margin: 30px"
+        />
+      </a>
+      <span></span>
+    </div>
+
+    <h1 style="font-family: Sans-Serif; font-size: 2.2em; text-align: center">
+      <span class="first-letter">N</span>amed
+      <span class="first-letter">E</span>ntity
+      <span class="first-letter">R</span>ecognition using LSTM with Keras
+    </h1>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book. It has survived not only five centuries, but
+      also the leap into electronic typesetting, remaining essentially
+      unchanged. It was popularised in the 1960s with the release of Letraset
+      sheets containing Lorem Ipsum passages, and more recently with desktop
+      publishing software like Aldus PageMaker including versions of Lorem
+      Ipsum.
+    </p>
+    <p></p>
+
+    <form
+      method="POST"
+      action="/predict"
+      style="display: flex; flex-direction: column; gap: 8px"
+    >
+      <label
+        style="max-width: 80vw; font-size: 1.2em; font-family: Sans-Serif"
+        for="text"
+        >Enter your sentence below:</label
+      >
+      <textarea name="text" id="text" required></textarea>
+
+      <input type="submit" />
+      {%block content%}{%endblock%}
+    </form>
+  </body>
+</html>
