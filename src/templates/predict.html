@@ -7,29 +7,30 @@
     gap: 5px;
   "
 >
-  <p>Entities:</p>
+<style>
 
-  <style>
+  #prediction {
+      width: 50vw;
+  }
 
-    #prediction {
-        width: 50vw;
+  @media only screen and (max-width: 600px) {
+      #prediction {
+        width: 300px;
+      }
     }
 
-    @media only screen and (max-width: 600px) {
-        #prediction {
-          width: 300px;
-        }
-      }
+</style>
+  <p style="margin:3px 0">Entities:</p>
 
-  </style>
-  
-  <div id="prediction" style="display: flex; flex-wrap: wrap; flex-direction: row">
+  <div id="prediction" style="display: flex; flex-wrap: wrap; flex-direction: row; align-items:flex-end">
   {% for i, tag in pred %}
 
-  {% if tag!="O" %} <span style="text-transform: uppercase; color:{% if tag!="O" %}{{colors[tag]}}{% endif %}; background:#fff; padding: 3px; position: relative; height: fit-content; transform:translate(20px); border-radius:5px; font-size:0.9em; top:0;">{{tag}}</span>{% endif %}
-  <p style="text-align: left; color: {% if tag!="O" %}{{colors[tag]}}{% endif %}; background:{% if tag!="O" %}{{colors[tag]+"55"}}{% endif %}; padding:{% if tag!="O" %}15px 10px 10px 10px{%else%}10px 0{% endif %}; margin: 3px 5px; border-radius: 10px; font-weight: {% if tag!="O" %}600 {% else %}500{% endif %}">
+  <div style="display: flex; flex-direction: column; ">
+  {% if tag!="O" %} <span style="text-transform: uppercase; color:{% if tag!="O" %}{{colors[tag]}}{% endif %}; background:#fff; padding: 3px; position: relative; height: fit-content; width: fit-content; border-radius:5px; font-size:0.9em; top:0; transform: translate(0px, 5px)">{{tag}}</span>{% endif %}
+  <p style="text-align: left; color: {% if tag!="O" %}{{colors[tag]}}{% endif %}; font-weight: {% if tag!="O" %}600 {% else %}500{% endif %}; padding:{% if tag!="O" %}5px 10px{%else%}10px 0 5px 0{% endif %};background:{% if tag!="O" %}{{colors[tag]+"55"}}{% endif %}; margin:{% if tag!="O" %}0{%else%}0 10px{% endif %};  border-radius: 10px;">
     {{tokens[i]}}
   </p>
+</div>
 
   {% endfor %}
 </div>
