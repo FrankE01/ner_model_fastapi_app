@@ -1,0 +1,12 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+icon: src/static/images/mark512.png
+micros:
+  - name: ner-model-app
+    src: ./src/
+    engine: python3.9
+    primary: true
+    run: uvicorn main:app
+    dev: uvicorn main:app --reload
+
+    
